@@ -1,4 +1,4 @@
 <h1>Welcome, <%=current_user.username %> </h1>
 <% @notes.each do |note| %>
-  <li> <a href="/note/<%= note.id %>"> <%= tweet.content %> </a></li>
+  <li> <a href="/notes/<%= note.id %>"> <%= note.content %> </a></li>
 <% end %>
