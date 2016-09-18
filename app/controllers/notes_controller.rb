@@ -1,3 +1,4 @@
+require 'pry'
 class NotesController < ApplicationController
 
   get '/notes' do
@@ -17,21 +18,22 @@ class NotesController < ApplicationController
     end
   end
 
-  post 'notes' do
+  post '/notes' do
     if params[:content] == ""
       redirect to '/notes/new'
     else
+  binding.pry
       user = User.find_by_id(session[:user_id])
-      @note = Note.create(:content => params[:content], :user_id => user.id)
+      @note = Note.create(:content=> params[:content], :user_id=> user.id)
 
-      redirect to ('/notes/#{@note.id}')
+      redirect to ("/notes/#{@note.id}")
     end
   end
 
   get '/notes/:id' do
     if logged_in?
       @note = Note.find_by_id(params[:id])
-      erb :'/notes/show'
+      erb :'notes/show'
     else
       redirect to '/login'
     end

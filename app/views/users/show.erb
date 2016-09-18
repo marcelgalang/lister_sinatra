@@ -1,0 +1,6 @@
+<p> Here are your Notes, <%= @user.username %>
+<% @user.notes.each do |note| %>
+  <div>
+    <%= note.content %>
+  </div>
+<% end %>
